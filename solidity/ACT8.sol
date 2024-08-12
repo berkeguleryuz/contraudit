@@ -3,10 +3,9 @@ pragma solidity ^0.8.24;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
-import "@openzeppelin/contracts/security/Pausable.sol";
 import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
 
-contract AdvancedTokenWithVesting is ERC20, Ownable, Pausable, ERC20Burnable {
+contract AdvancedTokenWithVesting is ERC20, Ownable, ERC20Burnable {
     struct VestingSchedule {
         uint256 totalAmount;
         uint256 releasedAmount;
@@ -21,7 +20,7 @@ contract AdvancedTokenWithVesting is ERC20, Ownable, Pausable, ERC20Burnable {
     event TokensReleased(address indexed beneficiary, uint256 amount);
     event VestingAdded(address indexed beneficiary, uint256 amount, uint256 start, uint256 cliff, uint256 duration);
 
-    constructor() ERC20("Advanced Token", "ADT") {
+    constructor() ERC20("Advanced Token", "ADT") Ownable(msg.sender) ERC20Burnable() {
         _mint(msg.sender, _initialSupply);
     }
 
@@ -79,19 +78,11 @@ contract AdvancedTokenWithVesting is ERC20, Ownable, Pausable, ERC20Burnable {
         _burn(msg.sender, amount);
     }
 
-    function pause() external onlyOwner {
-        _pause();
-    }
-
-    function unpause() external onlyOwner {
-        _unpause();
-    }
-
-    function transfer(address to, uint256 amount) public override whenNotPaused returns (bool) {
+    function transfer(address to, uint256 amount) public override returns (bool) {
         return super.transfer(to, amount);
     }
 
-    function transferFrom(address from, address to, uint256 amount) public override whenNotPaused returns (bool) {
+    function transferFrom(address from, address to, uint256 amount) public override returns (bool) {
         return super.transferFrom(from, to, amount);
     }
 

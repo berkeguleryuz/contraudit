@@ -50,6 +50,7 @@ const ReactCodeEditor = ({
           onValueChange={(code) => setContract(code)}
           highlight={(code) => PrismHighlight(code)}
           padding={15}
+          placeholder="Paste your Solidity code here..."
           textareaId="code-editor"
           textareaClassName="outline-none"
           style={{
