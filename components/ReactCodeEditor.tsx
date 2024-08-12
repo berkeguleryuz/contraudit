@@ -2,7 +2,6 @@ import Editor from "react-simple-code-editor";
 import Prism from "prismjs";
 import "prismjs/components/prism-solidity";
 import "prismjs/themes/prism-tomorrow.css";
-import { IconCheck } from "@tabler/icons-react";
 import { ArrowRight, PaperclipIcon } from "lucide-react";
 import { Button } from "./ui/button";
 import { toast } from "./ui/use-toast";
@@ -34,7 +33,7 @@ const ReactCodeEditor = ({
         title: "Error",
         description: "Invalid Solidity code",
         variant: "destructive",
-      })
+      });
       return;
     }
 
@@ -63,21 +62,9 @@ const ReactCodeEditor = ({
         />
       </div>
       <div className="absolute bottom-px inset-x-px p-2 rounded-b-md bg-neutral-900">
-        <div className="flex justify-between items-center">
-          <div className="flex items-center">
-            <button
-              type="button"
-              onClick={handleAnalyze}
-              className="inline-flex flex-shrink-0 justify-center items-center size-8 rounded-lg text-gray-50 hover:text-blue-500 focus:z-10 focus:outline-none focus:ring-2 focus:ring-blue-500">
-              <PaperclipIcon className="w-5 h-5" />
-            </button>
-          </div>
-
-          <div className="flex items-center cursor-pointer group">
-            <Button
-              type="button"
-              variant="outline"
-              onClick={handleAnalyze}>
+        <div className="flex justify-end items-center">
+          <div className="flex justify-end items-center cursor-pointer group">
+            <Button type="button" variant="outline" onClick={handleAnalyze}>
               <span className="text-foreground font-extrabold">Analyze</span>
               <ArrowRight className="ml-2 w-5 h-5 group-hover:rotate-90 transition-transform" />
             </Button>
