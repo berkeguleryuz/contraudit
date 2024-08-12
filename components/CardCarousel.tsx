@@ -302,23 +302,23 @@ export function ClodronCardCarousel() {
 const DummyContent = () => {
   return (
     <>
-      {[...new Array(3).fill(1)].map((_, index) => {
+      {[...new Array(1).fill(1)].map((_, index) => {
         return (
           <div
             key={"dummy-content" + index}
             className="bg-[#F5F5F7] dark:bg-neutral-800 p-8 md:p-14 rounded-3xl mb-4">
             <p className="text-neutral-600 dark:text-neutral-400 text-base md:text-2xl font-sans max-w-3xl mx-auto">
               <span className="font-bold text-neutral-700 dark:text-neutral-200">
-                Hey
+                Validate your contract.
               </span>{" "}
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, laborum.
+              It can increase the security of your contract and potantially.
             </p>
             <Image
-              src="https://assets.aceternity.com/macbook.png"
+              src="https://images.pexels.com/photos/8369837/pexels-photo-8369837.jpeg?auto=compress&cs=tinysrgb&w=800"
               alt=""
               height="500"
               width="500"
-              className="md:w-1/2 md:h-1/2 h-full w-full mx-auto object-contain"
+              className="md:w-1/2 md:h-1/2 h-full w-full mx-auto object-contain rounded-xl"
             />
           </div>
         );
